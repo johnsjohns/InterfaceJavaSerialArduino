@@ -1,27 +1,24 @@
 String b = "";
 void setup() {
   Serial.begin(9600);
-  pinMode(LED_BUILTIN, OUTPUT);
+  for(int i = 0; i <= 13; i++){
+  pinMode(i, OUTPUT);
+  }
   
 }
 
 void loop() {
   if(Serial.available() > 0){
-    String a = Serial.readString();
-    a.trim();
+    String recebido = Serial.readString();
+    recebido.trim();
     
-
-    if(a.equals("retorna")){
-      Serial.println(b);
-    } else { b = a;}
-    if(a.equals("liga")){
-     
-      digitalWrite(LED_BUILTIN, HIGH);
+    if(recebido.substring(0,4).equals("TRUE")){
+      digitalWrite(recebido.substring(5).toInt(), HIGH);
     }
 
-    if(a.equals("desliga")){
+    if(recebido.substring(0,5).equals("FALSE")){
      
-      digitalWrite(LED_BUILTIN, LOW);
+      digitalWrite(recebido.substring(6).toInt(), LOW);
     }
     
   }

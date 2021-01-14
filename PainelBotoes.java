@@ -225,10 +225,12 @@ public class PainelBotoes extends JPanel {
                     serial.connect();
                     serial.sendString("value");
                     btConnect.setText("Desconectar");
+                    pCombo.enableInputMethods(false);
                 } else {
                     if(serial != null){
                         serial.close();
                         btConnect.setText("Conectar");
+                        pCombo.enableInputMethods(true);
                     }
                 }
             }
@@ -240,7 +242,7 @@ public class PainelBotoes extends JPanel {
                 serial.sendString("TRUE " + porta);
             } else {
                 botao.setText("OFF");
-                serial.sendString("False " + porta);
+                serial.sendString("FALSE " + porta);
             }
         }
     }

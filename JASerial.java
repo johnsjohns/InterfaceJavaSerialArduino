@@ -38,10 +38,10 @@ public class JASerial {
       
        try{
            OutputStream out = port[address].getOutputStream();
-           int count = value.length()-1;
-           while (count >=0){
+           int count = 0;
+           while (count <= value.length()-1){
                out.write(value.charAt(count));
-               count--;
+               count++;
            }
            out.close();
        } catch (IOException e){
