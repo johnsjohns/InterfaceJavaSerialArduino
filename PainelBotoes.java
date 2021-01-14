@@ -17,90 +17,49 @@ public class PainelBotoes extends JPanel {
     private PainelCombo pCombo;
 
     public PainelBotoes() {
-        JPanel botao0 = new JPanel(new FlowLayout());
+
         lblPort0 = new JLabel("Porta 0");
         btPort0 = new JButton("OFF");
-        botao0.add(lblPort0);
-        botao0.add(btPort0);
 
-        JPanel botao1 = new JPanel(new FlowLayout());
         lblPort1 = new JLabel("Porta 1");
         btPort1 = new JButton("OFF");
-        botao1.add(lblPort1);
-        botao1.add(btPort1);
 
-        JPanel botao2 = new JPanel(new FlowLayout());
         lblPort2 = new JLabel("Porta 2");
         btPort2 = new JButton("OFF");
-        botao2.add(lblPort2);
-        botao2.add(btPort2);
 
-        JPanel botao3 = new JPanel(new FlowLayout());
         lblPort3 = new JLabel("Porta 3");
         btPort3 = new JButton("OFF");
-        botao3.add(lblPort3);
-        botao3.add(btPort3);
 
-        JPanel botao4 = new JPanel(new FlowLayout());
         lblPort4 = new JLabel("Porta 4");
         btPort4 = new JButton("OFF");
-        botao4.add(lblPort4);
-        botao4.add(btPort4);
 
-        JPanel botao5 = new JPanel(new FlowLayout());
         lblPort5 = new JLabel("Porta 5");
         btPort5 = new JButton("OFF");
-        botao5.add(lblPort5);
-        botao5.add(btPort5);
 
-        JPanel botao6 = new JPanel(new FlowLayout());
         lblPort6 = new JLabel("Porta 6");
         btPort6 = new JButton("OFF");
-        botao6.add(lblPort6);
-        botao6.add(btPort6);
 
-        JPanel botao7 = new JPanel(new FlowLayout());
         lblPort7 = new JLabel("Porta 7");
         btPort7 = new JButton("OFF");
-        botao7.add(lblPort7);
-        botao7.add(btPort7);
 
-        JPanel botao8 = new JPanel(new FlowLayout());
         lblPort8 = new JLabel("Porta 8");
         btPort8 = new JButton("OFF");
-        botao8.add(lblPort8);
-        botao8.add(btPort8);
 
-        JPanel botao9 = new JPanel(new FlowLayout());
         lblPort9 = new JLabel("Porta 9");
         btPort9 = new JButton("OFF");
-        botao9.add(lblPort9);
-        botao9.add(btPort9);
 
-        JPanel botao10 = new JPanel(new FlowLayout());
         lblPort10 = new JLabel("Porta 10");
         btPort10 = new JButton("OFF");
-        botao10.add(lblPort10);
-        botao10.add(btPort10);
 
-        JPanel botao11 = new JPanel(new FlowLayout());
         lblPort11 = new JLabel("Porta 11");
         btPort11 = new JButton("OFF");
-        botao11.add(lblPort11);
-        botao11.add(btPort11);
 
-        JPanel botao12 = new JPanel(new FlowLayout());
         lblPort12 = new JLabel("Porta 12");
         btPort12 = new JButton("OFF");
-        botao12.add(lblPort12);
-        botao12.add(btPort12);
-
-        JPanel botao13 = new JPanel(new FlowLayout());
+       
         lblPort13 = new JLabel("Porta 13");
         btPort13 = new JButton("OFF");
-        botao13.add(lblPort13);
-        botao13.add(btPort13);
-
+        
         btConnect = new JButton("Conectar");
 
         pCombo = new PainelCombo();
@@ -158,6 +117,7 @@ public class PainelBotoes extends JPanel {
         btConnect.addActionListener(btHander);        
 
         serial = new JASerial();
+        desabilitaBotoes();
     }
 
     private class ButtonHander implements ActionListener {
@@ -226,11 +186,13 @@ public class PainelBotoes extends JPanel {
                     serial.sendString("value");
                     btConnect.setText("Desconectar");
                     pCombo.enableInputMethods(false);
+                    habilitarBotoes();
                 } else {
                     if(serial != null){
                         serial.close();
                         btConnect.setText("Conectar");
                         pCombo.enableInputMethods(true);
+                        desabilitaBotoes();
                     }
                 }
             }
@@ -245,6 +207,40 @@ public class PainelBotoes extends JPanel {
                 serial.sendString("FALSE " + porta);
             }
         }
+    }
+
+    private void desabilitaBotoes(){
+        btPort0.setEnabled(false);
+        btPort1.setEnabled(false);
+        btPort2.setEnabled(false);
+        btPort3.setEnabled(false);
+        btPort4.setEnabled(false);
+        btPort5.setEnabled(false);
+        btPort6.setEnabled(false);
+        btPort7.setEnabled(false);
+        btPort8.setEnabled(false);
+        btPort9.setEnabled(false);
+        btPort10.setEnabled(false);
+        btPort11.setEnabled(false);
+        btPort12.setEnabled(false);
+        btPort13.setEnabled(false);
+    }
+
+    private void habilitarBotoes(){
+        btPort0.setEnabled(true);
+        btPort1.setEnabled(true);
+        btPort2.setEnabled(true);
+        btPort3.setEnabled(true);
+        btPort4.setEnabled(true);
+        btPort5.setEnabled(true);
+        btPort6.setEnabled(true);
+        btPort7.setEnabled(true);
+        btPort8.setEnabled(true);
+        btPort9.setEnabled(true);
+        btPort10.setEnabled(true);
+        btPort11.setEnabled(true);
+        btPort12.setEnabled(true);
+        btPort13.setEnabled(true);
     }
     
 }
