@@ -183,7 +183,6 @@ public class PainelBotoes extends JPanel {
                 if(btConnect.getText().equals("Conectar")){
                     serial.setPort(pCombo.getPort());
                     serial.connect();
-                    serial.sendString("value");
                     btConnect.setText("Desconectar");
                     pCombo.enableInputMethods(false);
                     habilitarBotoes();
