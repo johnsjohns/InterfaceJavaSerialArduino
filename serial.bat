@@ -1,2 +1,2 @@
 @echo off
-java -cp .;jSerialComm-2.6.2.jar PainelPrincipal
+java -cp .\src;.\lib\jSerialComm-2.6.2.jar PainelPrincipal
