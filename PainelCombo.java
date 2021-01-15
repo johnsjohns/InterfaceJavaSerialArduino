@@ -8,9 +8,12 @@ public class PainelCombo extends JPanel {
 
     public PainelCombo() {
         JASerial portas = new JASerial();
+        seriais = new JComboBox();
         if(portas.getPort().length != 0){
             try{
-                seriais = new JComboBox(portas.getPort());
+                for(int i = 0; i < portas.getPort().length; i++){
+                seriais.addItem(portas.getPort()[i]);
+                }
             } catch (Exception e){
                 e.printStackTrace();
             };
@@ -19,6 +22,7 @@ public class PainelCombo extends JPanel {
             add(lblSerial);
             add(seriais);
             seriais.setSelectedIndex(0);
+            
         }
     }
 
