@@ -14,6 +14,7 @@ void loop() {
     
     if(recebido.substring(0,4).equals("TRUE")){
       digitalWrite(recebido.substring(5).toInt(), HIGH);
+      Serial.println("ligado");
     }
 
     if(recebido.substring(0,5).equals("FALSE")){
