@@ -186,6 +186,8 @@ public class PainelBotoes extends JPanel {
                     btConnect.setText("Desconectar");
                     pCombo.enableInputMethods(false);
                     habilitarBotoes();
+                    serial.receiveData();
+                    
                 } else {
                     if(serial != null){
                         serial.close();

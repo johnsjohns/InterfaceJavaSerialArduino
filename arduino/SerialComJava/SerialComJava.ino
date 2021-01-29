@@ -4,6 +4,7 @@ void setup() {
   for(int i = 0; i <= 13; i++){
   pinMode(i, OUTPUT);
   }
+  Serial.println("Conectado");
   
 }
 
@@ -14,7 +15,7 @@ void loop() {
     
     if(recebido.substring(0,4).equals("TRUE")){
       digitalWrite(recebido.substring(5).toInt(), HIGH);
-      Serial.println("ligado");
+      Serial.println(recebido.substring(5));
     }
 
     if(recebido.substring(0,5).equals("FALSE")){

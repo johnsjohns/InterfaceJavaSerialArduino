@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
 import com.fazecast.jSerialComm.SerialPort;
@@ -45,19 +44,16 @@ public class JASerial {
                count++;
            }
            out.close();
+           receiveData();
        } catch (IOException e){
            e.printStackTrace();
        }
-       receive();
    }
 
-   public void receive(){
-       InputStream in = port[address].getInputStream();
-       try {
-           for (int j = 0; j < 1000; ++j)
-            System.out.print((char)in.read());
-            in.close();
-    } catch (Exception e) { e.printStackTrace(); }
-    
+   public void receiveData(){
+       System.out.println("lendo: ");
+       DataReceiver recebe = new DataReceiver(port[address]);
+       Thread recebendo = new Thread(recebe);
+       recebendo.start();
    }
 }
